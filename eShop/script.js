@@ -38,3 +38,34 @@ class GoodsList {
 const list = new GoodsList();
 list.fetchGoods();
 list.render();
+
+//User cart
+
+class CartItem {
+  constructor(title, price) {
+    this.title = title;
+    this.price = price;
+  }
+  render() {
+    return `<div class="cart-item"><h5>${this.title}</h5><p>${this.price}</p>`;
+  }
+}
+
+class Cart {
+  constructor() {
+    this.goods = [];
+  }
+  fetchCart() {
+      
+  };
+    
+    renderCart () { 
+    let cartList = '';
+  this.goods.forEach(good => {
+      const Item = new cartItem(good.title, good.price);
+      cartList += CartItem.render();
+    });
+    document.querySelector('.cart-block').innerHTML = cartList;
+  }
+
+}
