@@ -1,12 +1,39 @@
 body{
     font-family: Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif"; 	
 }
-.cart{
-   display: block;
-    width: 100%;
+header {
+    display: flex;
+    justify-content: flex-end;
     height: 50px;
 	border: 1px solid black;
 	border-radius: 10px;
+}
+.search {
+    display: inline-flex;
+}
+.goods-search{
+height: 30px;
+margin: 10px 0px;
+border: none;
+border-bottom: 1px solid black;
+font-size: 20px;
+
+}
+.search-button{
+    display: block;
+    float: right; 
+    width: 100px;
+    margin: 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 0 0 10px darkgrey;
+    
+}
+.cart{
+   
+    
+   
 }
 .cart-button{
     display: block;

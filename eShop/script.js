@@ -30,23 +30,38 @@ function makeGETRequest(url, callback) {
 class GoodsList {
   constructor() {
     this.goods = [];
+    this.filteredGoods = [];
+
   }
   fetchGoods(cb) {
     makeGETRequest(API_URL, (goods) => {
       this.goods = JSON.parse(goods);
+      this.filteredGoods = JSON.parse(goods);
       cb();
     })
   }
 
   render() {
     let listHtml = '';
-    this.goods.forEach(good => {
+    this.filteredGoods.forEach(good => {
       const goodItem = new GoodsItem(good.title, good.price, good.image);
       listHtml += goodItem.render();
     });
     document.querySelector('.goods-list').innerHTML = listHtml;
   }
+  filterGoods(value) {
+    // Здесь будем фильтровать список товаров
+    const regexp = new RegExp(value, 'i');
+    this.filteredGoods = this.goods.filter(good => regexp.test(good.title));
+    this.render();
+
+  }
+
 }
+searchButton.addEventListener('click', (e) => {
+  const value = searchInput.value;
+  list.filterGoods(value);
+})
 const list = new GoodsList();
 list.fetchGoods(() => {
   list.render();
@@ -81,5 +96,4 @@ class Cart {
     });
     document.querySelector('.cart-block').innerHTML = cartList;
   }
-
 }
