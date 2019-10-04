@@ -58,7 +58,7 @@ class GoodsList {
   }
 
 }
-searchButton.addEventListener('click', (e) => {
+document.querySelector('.search-button').addEventListener('click', (e) => {
   const value = searchInput.value;
   list.filterGoods(value);
 })
