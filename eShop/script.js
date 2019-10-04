@@ -59,7 +59,7 @@ class GoodsList {
 
 }
 document.querySelector('.search-button').addEventListener('click', (e) => {
-  const value = searchInput.value;
+  const value = document.querySelector('.goods-search').value;
   list.filterGoods(value);
 })
 const list = new GoodsList();
