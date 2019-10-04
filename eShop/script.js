@@ -2,8 +2,14 @@ var userCart = [];
 
 document.querySelector('.cart-button').addEventListener('click', () => {
     document.querySelector('.cart-block').classList.toggle('invisible');
-	});
-
+  });
+  
+  function makeGETRequest (url) {
+    return fetch (url)
+        .then(result => result.json())
+        
+        .catch (err => {console.log (err)})
+  }
 class GoodsItem {
   constructor(title, price, image) {
     this.title = title;
@@ -15,7 +21,9 @@ class GoodsItem {
   }
 }
 const API_URL = 'https://raw.githubusercontent.com/YuliaAnikeeva/GitTest/master/catforeshop.json';
-function makeGETRequest(url, callback) {
+
+
+/* function makeGETRequest(url, callback) {
   let xhr;
   xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
@@ -26,20 +34,23 @@ function makeGETRequest(url, callback) {
 
   xhr.open('GET', url, true);
   xhr.send();
-}
+} */
+
+
 class GoodsList {
   constructor() {
     this.goods = [];
     this.filteredGoods = [];
-
   }
-  fetchGoods(cb) {
+
+
+  /* fetchGoods(cb) {
     makeGETRequest(API_URL, (goods) => {
       this.goods = JSON.parse(goods);
       this.filteredGoods = JSON.parse(goods);
       cb();
     })
-  }
+  } */
 
   render() {
     let listHtml = '';
@@ -49,6 +60,15 @@ class GoodsList {
     });
     document.querySelector('.goods-list').innerHTML = listHtml;
   }
+  fetchGoods() {
+    makeGETRequest(API_URL)
+        .then (data => {
+            this.goods = JSON.parse(data);
+            this.render()
+        })
+        
+}
+
   filterGoods(value) {
     // Здесь будем фильтровать список товаров
     const regexp = new RegExp(value, 'i');
@@ -80,7 +100,7 @@ class CartItem {
   }
 }
 
-class Cart {
+/* class Cart {
   constructor() {
     this.goods = [];
   }
@@ -97,3 +117,4 @@ class Cart {
     document.querySelector('.cart-block').innerHTML = cartList;
   }
 }
+ */
