@@ -52,9 +52,10 @@ body{
 }
 .goods-list{
  display: flex;
-    justify-content: space-between;
+justify-content: flex-start;
+flex-wrap: wrap;
 
-  width: auto;  
+   
 }
 .goods-item{
    
@@ -64,6 +65,7 @@ body{
     width: 100px;
     height: auto;
     padding: 10px;
+    
    
     
 }
