@@ -40,7 +40,7 @@ const API_URL = 'https://raw.githubusercontent.com/YuliaAnikeeva/GitTest/master/
 class GoodsList {
   constructor() {
     this.goods = [];
-    this.filteredGoods = [];
+    
   }
 
 
@@ -52,23 +52,23 @@ class GoodsList {
     })
   } */
 
-  render() {
-    let listHtml = '';
-    this.filteredGoods.forEach(good => {
-      const goodItem = new GoodsItem(good.title, good.price, good.image);
-      listHtml += goodItem.render();
-    });
-    document.querySelector('.goods-list').innerHTML = listHtml;
-  }
+
   fetchGoods() {
     makeGETRequest(API_URL)
         .then (data => {
-            this.goods = JSON.parse(data);
+            this.goods = data;
+            this.filteredGoods = data;
             this.render()
-        })
-        
+        })      
 }
-
+render() {
+  let listHtml = '';
+  this.filteredGoods.forEach(good => {
+    const goodItem = new GoodsItem(good.title, good.price, good.image);
+    listHtml += goodItem.render();
+  });
+  document.querySelector('.goods-list').innerHTML = listHtml;
+}
   filterGoods(value) {
     // Здесь будем фильтровать список товаров
     const regexp = new RegExp(value, 'i');
