@@ -31,7 +31,7 @@ font-size: 20px;
     
 }
 .cart{
-   
+color: black;   
     
    
 }
@@ -77,7 +77,7 @@ font-size: 20px;
     border-right: 10px solid transparent;
     border-bottom: 10px solid lightgrey;
 }
-.goods-list{
+.products{
  display: flex;
 justify-content: flex-start;
 flex-wrap: wrap;
@@ -103,7 +103,7 @@ flex-wrap: wrap;
 }
 
 .goods-item p{
-    
+    color: black;
     
 }
 .goods-item .item-button{
